@@ -105,8 +105,8 @@ importers:
   packages/client:
     dependencies:
       '@sphereon/oid4vci-common':
-        specifier: workspace:*
-        version: link:../common
+        specifier: file:../common/
+        version: file:packages/common
       '@sphereon/ssi-types':
         specifier: ^0.9.0
         version: 0.9.0
@@ -13036,3 +13036,16 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  file:packages/common:
+    resolution: {directory: packages/common, type: directory}
+    name: '@sphereon/oid4vci-common'
+    version: 0.5.0
+    engines: {node: '>=16'}
+    dependencies:
+      '@sphereon/ssi-types': 0.9.0
+      cross-fetch: 3.1.6
+      jwt-decode: 3.1.2
+    transitivePeerDependencies:
+      - encoding
+    dev: false
