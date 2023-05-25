@@ -75,6 +75,7 @@ const createJWT = (jwtProps?: JwtProps, existingJwt?: Jwt): Jwt => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const alg = getJwtProperty('alg', false, jwtProps?.alg, existingJwt?.header?.alg, 'ES256')!;
   const kid = getJwtProperty('kid', true, jwtProps?.kid, existingJwt?.header?.kid);
+  const typ = getJwtProperty('typ', true, jwtProps?.typ, existingJwt?.header?.typ, 'jwt');
   const jwt: Partial<Jwt> = existingJwt ? existingJwt : {};
   const now = +new Date();
   const jwtPayload: Partial<JWTPayload> = {
@@ -87,7 +88,7 @@ const createJWT = (jwtProps?: JwtProps, existingJwt?: Jwt): Jwt => {
   };
 
   const jwtHeader: JWTHeader = {
-    typ: 'jwt',
+    typ,
     alg,
     kid,
   };

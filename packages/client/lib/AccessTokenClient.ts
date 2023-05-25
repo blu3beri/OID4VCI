@@ -194,7 +194,7 @@ export class AccessTokenClient {
   }
 
   private async sendAuthCode(requestTokenURL: string, accessTokenRequest: AccessTokenRequest): Promise<OpenIDResponse<AccessTokenResponse>> {
-    return await formPost(requestTokenURL, convertJsonToURI(accessTokenRequest));
+    return await formPost(requestTokenURL, convertJsonToURI(accessTokenRequest, { encodeAsSingleJson: false }));
   }
 
   public static determineTokenURL({
